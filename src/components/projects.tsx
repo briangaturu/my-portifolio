@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Github, ExternalLink } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -7,21 +8,24 @@ const Projects = () => {
       description:
         "A full-stack web application for renting vehicles, featuring real-time booking, admin dashboard, and Stripe payments. Built with React, Express, and PostgreSQL.",
       tech: ["React", "TypeScript", "Express", "PostgreSQL", "Stripe"],
-      link: "#",
+      github: "https://github.com/briangaturu/vehicle-rental-system",
+      demo: "https://vehicle-rental-mgnt-system.netlify.app/",
     },
     {
       title: "Restaurant Ordering App",
       description:
         "An online restaurant system where users can browse meals, add items to cart, schedule orders, and complete payments. Admins can manage menu and orders.",
       tech: ["React", "Node.js", "Drizzle ORM", "Cloudinary"],
-      link: "#",
+      github: "https://github.com/briangaturu/grill-and-go",
+      demo: "https://restaurant-ordering-demo.vercel.app",
     },
     {
       title: "Portfolio Website",
       description:
         "A personal portfolio website built with React, TailwindCSS, and Framer Motion. Designed to showcase projects, experience, and contact information elegantly.",
       tech: ["React", "TailwindCSS", "Framer Motion"],
-      link: "#",
+      github: "https://github.com/briangaturu/my-portifolio",
+      demo: "https://briangaturu.vercel.app",
     },
   ];
 
@@ -47,6 +51,7 @@ const Projects = () => {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               {project.title}
             </h3>
+
             <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4">
               {project.description}
             </p>
@@ -62,14 +67,25 @@ const Projects = () => {
               ))}
             </div>
 
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-500 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition"
-            >
-              View Project →
-            </a>
+            {/* Action Buttons */}
+            <div className="flex items-center gap-4 mt-4">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition dark:bg-gray-700 dark:hover:bg-gray-600"
+              >
+                <Github size={16} /> GitHub
+              </a>
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition"
+              >
+                <ExternalLink size={16} /> Live Demo
+              </a>
+            </div>
           </motion.div>
         ))}
       </div>

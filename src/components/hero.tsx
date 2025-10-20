@@ -53,7 +53,7 @@ const Hero = () => {
         <img
           src={brian}
           alt="Brian Gaturu illustration"
-          className="w-72 md:w-[400px] drop-shadow-xl rounded-full"
+          className="w-72 md:w-[400px] drop-shadow-xl rounded-md"
         />
       </motion.div>
     </section>

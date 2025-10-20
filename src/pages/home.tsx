@@ -5,6 +5,9 @@ import About from "../components/about";
 import Education from "../components/education";
 import Experience from "../components/experience";
 import Projects from "../components/projects";
+import Community from "../components/community";
+import Contact from "../components/contact";
+
 
 const Home: React.FC = () => {
   return (
@@ -15,6 +18,8 @@ const Home: React.FC = () => {
       <Education />
       <Experience />
       <Projects />
+      <Community />
+      <Contact />
       
     </>
   );
