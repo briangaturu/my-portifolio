@@ -25,7 +25,7 @@ const Projects = () => {
         "A personal portfolio website built with React, TailwindCSS, and Framer Motion. Designed to showcase projects, experience, and contact information elegantly.",
       tech: ["React", "TailwindCSS", "Framer Motion"],
       github: "https://github.com/briangaturu/my-portifolio",
-      demo: "https://briangaturu.vercel.app",
+      demo: "https://brian-gaturu1.netlify.app/",
     },
   ];
 
