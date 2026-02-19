@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import brian from "../assets/brian.jpg";
+// import brian from "../assets/brian2.jpeg";
 
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="flex flex-col md:flex-row items-center justify-between min-h-screen px-8 md:px-20 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      className="flex flex-col md:flex-row items-center justify-between min-h-screen px-8 md:px-20 bg-linear-to-br from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
     >
       {/* Left Content */}
       <motion.div

@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col md:flex-row items-stretch justify-center gap-10 px-6 md:px-20 py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+      className="min-h-screen flex flex-col md:flex-row items-stretch justify-center gap-10 px-6 md:px-20 py-20 bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
     >
       {/* About Me Card */}
       <motion.div

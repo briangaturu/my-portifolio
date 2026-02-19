@@ -21,7 +21,7 @@ const Community = () => {
   return (
     <section
       id="community"
-      className="min-h-screen flex flex-col items-center justify-center gap-10 px-6 md:px-20 py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+      className="min-h-screen flex flex-col items-center justify-center gap-10 px-6 md:px-20 py-20 bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center">
         Developer <span className="text-indigo-500">Community</span>
