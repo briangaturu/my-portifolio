@@ -12,7 +12,7 @@ const Experience = () => {
     {
       role: "UI/UX tracklead",
       company: "CISLU",
-      period: "2022 – Present",
+      period: "1 club year",
       description:
         "Currently working as one of the UI/UX trainers at Computing Innovation Society of Likipia University (CISLU) where I train students on the basics of UI/UX design using Figma and Adobe XD.",
     },
@@ -22,7 +22,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="min-h-screen flex flex-col items-center justify-center gap-8 px-6 md:px-16 py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+      className="min-h-screen flex flex-col items-center justify-center gap-8 px-6 md:px-16 py-16 bg-linear-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
          <span className="text-indigo-500">Experience</span>

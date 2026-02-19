@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-// import brian from "../assets/brian2.jpeg";
+import brian3 from "../assets/brian3.jpeg";
 
 const Hero = () => {
   return (
@@ -51,9 +51,9 @@ const Hero = () => {
         transition={{ duration: 1 }}
       >
         <img
-          src={brian}
+          src={brian3}
           alt="Brian Gaturu illustration"
-          className="w-72 md:w-[400px] drop-shadow-xl rounded-md"
+          className="w-72 md:w-[400px] aspect-square drop-shadow-xl rounded-full"
         />
       </motion.div>
     </section>
