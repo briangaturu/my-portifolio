@@ -36,7 +36,6 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const el = indicatorRef.current[active];
     if (el) {
-      const parent = el.offsetParent as HTMLElement;
       setIndicatorStyle({
         left: el.offsetLeft,
         width: el.offsetWidth,
