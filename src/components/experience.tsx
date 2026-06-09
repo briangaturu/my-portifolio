@@ -15,7 +15,7 @@ const experiences = [
     role: "UI/UX Track Lead",
     company: "CISLU",
     period: "1 Club Year",
-    icon: "💻",
+    icon: "🎨",
     type: "Leadership",
     tags: ["Figma", "Adobe XD", "Mentorship", "UI/UX"],
     description:
@@ -25,7 +25,7 @@ const experiences = [
     role: "Attache",
     company: "Newsline Media",
     period: "May 2026 – Aug 2026",
-    icon: "💻",
+    icon: "📡",
     type: "Attachment",
     tags: ["React", "Node.js", "TypeScript", "Express", "Mobile Dev", "Cybersecurity", "Networking"],
     description:
@@ -38,11 +38,11 @@ const Experience = () => {
     <section
       id="experience"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 py-24 overflow-hidden
-        bg-[#080f1e] dark:bg-[#080f1e]"
+        bg-gray-100 dark:bg-[#080f1e]"
     >
-      {/* scanlines */}
+      {/* scanlines — dark only */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-[0.025]"
         style={{
           backgroundImage:
             "repeating-linear-gradient(0deg,#fff 0px,#fff 1px,transparent 1px,transparent 4px)",
@@ -53,8 +53,8 @@ const Experience = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(99,179,237,.05) 1px,transparent 1px),
-            linear-gradient(90deg,rgba(99,179,237,.05) 1px,transparent 1px)
+            linear-gradient(rgba(99,179,237,.07) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(99,179,237,.07) 1px,transparent 1px)
           `,
           backgroundSize: "48px 48px",
         }}
@@ -71,10 +71,10 @@ const Experience = () => {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-500 mb-3">
-         Where I've Worked
+        <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-500 dark:text-cyan-400 mb-3">
+          // Where I've Worked
         </p>
-        <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+        <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight">
           My{" "}
           <span
             className="bg-clip-text text-transparent"
@@ -88,7 +88,7 @@ const Experience = () => {
       {/* ── Alternating Timeline ── */}
       <div className="relative z-10 w-full max-w-4xl">
         {/* vertical spine */}
-        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-linear-to-b from-cyan-400/50 via-indigo-400/40 to-transparent" />
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/50 via-indigo-400/40 to-transparent" />
 
         <div className="flex flex-col gap-12">
           {experiences.map((exp, i) => {
@@ -106,48 +106,45 @@ const Experience = () => {
               >
                 {/* card */}
                 <motion.div
-                  className="group relative flex-1 rounded-3xl border border-cyan-400/20 bg-white/5 backdrop-blur-xl p-7 shadow-[0_8px_40px_rgba(56,189,248,0.06)]"
+                  className="group relative flex-1 rounded-3xl border border-cyan-400/20 bg-white/60 dark:bg-white/5 backdrop-blur-xl p-7 shadow-[0_8px_40px_rgba(56,189,248,0.06)]"
                   whileHover={{ scale: 1.025, y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 28 }}
                 >
                   {/* hover top glow */}
-                  <div className="absolute top-0 left-6 right-6 h-px bg-linear-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+                  <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
                   {/* corner accent */}
                   <div
                     className="absolute top-0 left-0 w-24 h-24 rounded-tl-3xl pointer-events-none"
                     style={{
-                      background:
-                        "radial-gradient(circle at top left,rgba(56,189,248,0.1),transparent 70%)",
+                      background: "radial-gradient(circle at top left,rgba(56,189,248,0.1),transparent 70%)",
                     }}
                   />
 
                   {/* top row */}
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div>
-                      <h3 className="text-lg md:text-xl font-bold text-white leading-snug">
+                      <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-snug">
                         {exp.role}
                       </h3>
                       <p
                         className="text-sm font-semibold mt-0.5 bg-clip-text text-transparent"
-                        style={{
-                          backgroundImage: "linear-gradient(90deg,#38bdf8,#818cf8)",
-                        }}
+                        style={{ backgroundImage: "linear-gradient(90deg,#38bdf8,#818cf8)" }}
                       >
                         {exp.company}
                       </p>
                     </div>
 
                     <div className="flex flex-col items-end gap-1.5">
-                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold border border-indigo-400/30 bg-indigo-400/10 text-indigo-300 whitespace-nowrap">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold border border-indigo-400/30 bg-indigo-400/10 text-indigo-600 dark:text-indigo-300 whitespace-nowrap">
                         {exp.period}
                       </span>
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold border border-cyan-400/25 bg-cyan-400/10 text-cyan-300">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold border border-cyan-400/25 bg-cyan-400/10 text-cyan-600 dark:text-cyan-300">
                         {exp.type}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-sm text-gray-400 leading-relaxed mb-5">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
                     {exp.description}
                   </p>
 
@@ -155,7 +152,7 @@ const Experience = () => {
                     {exp.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-gray-300"
+                        className="px-3 py-1 rounded-full text-xs font-semibold border border-gray-300 dark:border-white/10 bg-gray-200/60 dark:bg-white/5 text-gray-700 dark:text-gray-300"
                       >
                         {tag}
                       </span>
@@ -165,7 +162,7 @@ const Experience = () => {
 
                 {/* spine node */}
                 <motion.div
-                  className="hidden md:flex shrink-0 w-10 h-10 rounded-full items-center justify-center border-2 border-cyan-400/60 bg-[#080f1e] shadow-[0_0_18px_rgba(56,189,248,0.4)]"
+                  className="hidden md:flex shrink-0 w-10 h-10 rounded-full items-center justify-center border-2 border-cyan-400/60 bg-gray-100 dark:bg-[#080f1e] shadow-[0_0_18px_rgba(56,189,248,0.4)]"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ delay: i * 0.15 + 0.3, type: "spring", stiffness: 400 }}
@@ -174,7 +171,7 @@ const Experience = () => {
                   <span className="text-base" aria-hidden="true">{exp.icon}</span>
                 </motion.div>
 
-                {/* spacer for the other side */}
+                {/* spacer */}
                 <div className="hidden md:block flex-1" />
               </motion.div>
             );
@@ -190,11 +187,11 @@ const Experience = () => {
         transition={{ delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
         <span className="text-xs text-gray-500 font-mono tracking-widest uppercase">
           More to come
         </span>
-        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
       </motion.div>
     </section>
   );

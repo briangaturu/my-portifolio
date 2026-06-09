@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
 
 interface NavItem {
   name: string;
@@ -16,12 +17,36 @@ const navLinks: NavItem[] = [
   { name: "Contact", href: "#contact" },
 ];
 
+/* ── dark mode hook ── */
+const useDarkMode = () => {
+  const [dark, setDark] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    const stored = localStorage.getItem("theme");
+    if (stored) return stored === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (dark) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [dark]);
+
+  return { dark, toggle: () => setDark((d) => !d) };
+};
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
   const indicatorRef = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const { dark, toggle } = useDarkMode();
 
   const { scrollY } = useScroll();
   const navOpacity = useTransform(scrollY, [0, 60], [0.7, 0.95]);
@@ -32,7 +57,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* move the sliding indicator to the active link */
   useEffect(() => {
     const el = indicatorRef.current[active];
     if (el) {
@@ -78,19 +102,16 @@ const Navbar: React.FC = () => {
             Brian Ireri
           </span>
           <span className="text-gray-900 dark:text-white font-black">.</span>
-          {/* logo glow */}
-          <span className="absolute -inset-1 rounded-lg blur-sm opacity-0 hover:opacity-30 transition-opacity bg-linear-to-r from-cyan-400 to-indigo-500 -z-10" />
+          <span className="absolute -inset-1 rounded-lg blur-sm opacity-0 hover:opacity-30 transition-opacity bg-gradient-to-r from-cyan-400 to-indigo-500 -z-10" />
         </motion.a>
 
         {/* ── Desktop Links ── */}
         <div className="hidden md:flex items-center relative gap-1">
-          {/* sliding background pill */}
           <motion.div
             className="absolute h-8 rounded-full bg-white/10 dark:bg-white/5 border border-cyan-400/20 backdrop-blur-sm z-0"
             animate={indicatorStyle}
             transition={{ type: "spring", stiffness: 380, damping: 32 }}
           />
-
           {navLinks.map((item) => (
             <a
               key={item.name}
@@ -104,7 +125,6 @@ const Navbar: React.FC = () => {
               }`}
             >
               {item.name}
-              {/* active dot */}
               {active === item.name && (
                 <motion.span
                   layoutId="active-dot"
@@ -115,19 +135,55 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        {/* ── CTA ── */}
-        <div className="hidden md:block">
+        {/* ── Desktop right: toggle + CTA ── */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* dark mode toggle */}
+          <motion.button
+            onClick={toggle}
+            aria-label="Toggle dark mode"
+            className="relative w-9 h-9 flex items-center justify-center rounded-lg border border-cyan-400/30 bg-white/10 dark:bg-white/5 backdrop-blur-sm text-gray-700 dark:text-gray-300 hover:border-cyan-400/60 transition-colors overflow-hidden"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.93 }}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {dark ? (
+                <motion.span
+                  key="sun"
+                  initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute"
+                >
+                  <Sun size={16} className="text-amber-400" />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="moon"
+                  initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute"
+                >
+                  <Moon size={16} className="text-indigo-400" />
+                </motion.span>
+              )}
+            </AnimatePresence>
+            {dark && (
+              <span className="absolute inset-0 rounded-lg bg-amber-400/10 pointer-events-none" />
+            )}
+          </motion.button>
+
+          {/* Hire Me */}
           <motion.a
             href="#contact"
             className="relative px-5 py-2 rounded-full text-sm font-semibold text-white overflow-hidden"
-            style={{
-              background: "linear-gradient(135deg,#38bdf8,#6366f1)",
-            }}
+            style={{ background: "linear-gradient(135deg,#38bdf8,#6366f1)" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
             <span className="relative z-10">Hire Me</span>
-            {/* shimmer */}
             <motion.span
               className="absolute inset-0 bg-white/25 -skew-x-12"
               initial={{ x: "-120%" }}
@@ -137,49 +193,90 @@ const Navbar: React.FC = () => {
           </motion.a>
         </div>
 
-        {/* ── Mobile Menu Button ── */}
-        <button
-          onClick={() => setIsOpen((p) => !p)}
-          className="md:hidden relative w-9 h-9 flex items-center justify-center rounded-lg border border-cyan-400/30 bg-white/10 dark:bg-white/5 backdrop-blur-sm text-gray-700 dark:text-gray-300 hover:border-cyan-400/60 transition-colors"
-          aria-label="Toggle menu"
-        >
-          <motion.svg
-            className="w-5 h-5"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            animate={isOpen ? "open" : "closed"}
+        {/* ── Mobile right: toggle + hamburger ── */}
+        <div className="md:hidden flex items-center gap-2">
+          {/* dark mode toggle */}
+          <motion.button
+            onClick={toggle}
+            aria-label="Toggle dark mode"
+            className="relative w-9 h-9 flex items-center justify-center rounded-lg border border-cyan-400/30 bg-white/10 dark:bg-white/5 backdrop-blur-sm text-gray-700 dark:text-gray-300 hover:border-cyan-400/60 transition-colors overflow-hidden"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.93 }}
           >
-            <motion.path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              variants={{
-                closed: { d: "M4 6h16" },
-                open: { d: "M6 18L18 6" },
-              }}
-            />
-            <motion.path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              variants={{
-                closed: { d: "M4 12h16", opacity: 1 },
-                open: { d: "M4 12h16", opacity: 0 },
-              }}
-            />
-            <motion.path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              variants={{
-                closed: { d: "M4 18h16" },
-                open: { d: "M6 6l12 12" },
-              }}
-            />
-          </motion.svg>
-        </button>
+            <AnimatePresence mode="wait" initial={false}>
+              {dark ? (
+                <motion.span
+                  key="sun"
+                  initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute"
+                >
+                  <Sun size={16} className="text-amber-400" />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="moon"
+                  initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute"
+                >
+                  <Moon size={16} className="text-indigo-400" />
+                </motion.span>
+              )}
+            </AnimatePresence>
+            {dark && (
+              <span className="absolute inset-0 rounded-lg bg-amber-400/10 pointer-events-none" />
+            )}
+          </motion.button>
+
+          {/* hamburger */}
+          <button
+            onClick={() => setIsOpen((p) => !p)}
+            className="relative w-9 h-9 flex items-center justify-center rounded-lg border border-cyan-400/30 bg-white/10 dark:bg-white/5 backdrop-blur-sm text-gray-700 dark:text-gray-300 hover:border-cyan-400/60 transition-colors"
+            aria-label="Toggle menu"
+          >
+            <motion.svg
+              className="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              animate={isOpen ? "open" : "closed"}
+            >
+              <motion.path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                variants={{
+                  closed: { d: "M4 6h16" },
+                  open: { d: "M6 18L18 6" },
+                }}
+              />
+              <motion.path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                variants={{
+                  closed: { d: "M4 12h16", opacity: 1 },
+                  open: { d: "M4 12h16", opacity: 0 },
+                }}
+              />
+              <motion.path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                variants={{
+                  closed: { d: "M4 18h16" },
+                  open: { d: "M6 6l12 12" },
+                }}
+              />
+            </motion.svg>
+          </button>
+        </div>
       </div>
 
       {/* ── Mobile Menu ── */}

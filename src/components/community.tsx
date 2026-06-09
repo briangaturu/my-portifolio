@@ -53,11 +53,11 @@ const Community = () => {
     <section
       id="community"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 py-24 overflow-hidden
-        bg-[#080f1e] dark:bg-[#080f1e]"
+        bg-[#f0f4ff] dark:bg-[#080f1e]"
     >
-      {/* scanlines */}
+      {/* scanlines — dark only */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-[0.025]"
         style={{
           backgroundImage:
             "repeating-linear-gradient(0deg,#fff 0px,#fff 1px,transparent 1px,transparent 4px)",
@@ -68,15 +68,15 @@ const Community = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(99,179,237,.05) 1px,transparent 1px),
-            linear-gradient(90deg,rgba(99,179,237,.05) 1px,transparent 1px)
+            linear-gradient(rgba(99,179,237,.07) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(99,179,237,.07) 1px,transparent 1px)
           `,
           backgroundSize: "48px 48px",
         }}
       />
       {/* blobs */}
-      <div className="absolute top-0 left-1/3 w-96 h-64 rounded-full bg-cyan-500/8 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/3 w-96 h-64 rounded-full bg-violet-500/8 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-96 h-64 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/3 w-96 h-64 rounded-full bg-violet-500/10 blur-3xl pointer-events-none" />
 
       {/* ── Heading ── */}
       <motion.div
@@ -86,10 +86,10 @@ const Community = () => {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-500 mb-3">
-           Where I Collaborate
+        <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-500 dark:text-cyan-400 mb-3">
+          // Where I Collaborate
         </p>
-        <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+        <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight">
           Developer{" "}
           <span
             className="bg-clip-text text-transparent"
@@ -98,7 +98,7 @@ const Community = () => {
             Community
           </span>
         </h2>
-        <p className="mt-4 text-gray-400 max-w-lg mx-auto text-sm leading-relaxed">
+        <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-lg mx-auto text-sm leading-relaxed">
           I believe great software is built together — here's where I show up.
         </p>
       </motion.div>
@@ -110,7 +110,7 @@ const Community = () => {
           return (
             <motion.div
               key={item.title}
-              className={`group relative flex flex-col rounded-3xl border bg-linear-to-br backdrop-blur-xl p-7 ${item.accent}`}
+              className={`group relative flex flex-col rounded-3xl border bg-gradient-to-br backdrop-blur-xl p-7 ${item.accent}`}
               style={{ boxShadow: `0 8px 40px ${item.glow}` }}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -119,7 +119,7 @@ const Community = () => {
               viewport={{ once: true }}
             >
               {/* top hover glow */}
-              <div className="absolute top-0 left-6 right-6 h-px bg-linear-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+              <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
               {/* corner accent */}
               <div
                 className="absolute top-0 left-0 w-24 h-24 rounded-tl-3xl pointer-events-none"
@@ -138,11 +138,11 @@ const Community = () => {
                 </span>
               </div>
 
-              <h3 className="text-lg font-black text-white mb-3 leading-snug">
+              <h3 className="text-lg font-black text-gray-900 dark:text-white mb-3 leading-snug">
                 {item.title}
               </h3>
 
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                 {item.description}
               </p>
 
@@ -166,7 +166,7 @@ const Community = () => {
         transition={{ delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <p className="text-sm text-gray-500 font-mono">// Want to build something together?</p>
+        <p className="text-sm text-gray-500 dark:text-gray-500 font-mono">// Want to build something together?</p>
         <a
           href="https://github.com/briangaturu"
           target="_blank"
@@ -187,11 +187,11 @@ const Community = () => {
         transition={{ delay: 0.6 }}
         viewport={{ once: true }}
       >
-        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
         <span className="text-xs text-gray-500 font-mono tracking-widest uppercase">
           Better Together
         </span>
-        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
       </motion.div>
     </section>
   );
