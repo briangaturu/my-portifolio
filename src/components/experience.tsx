@@ -88,7 +88,7 @@ const Experience = () => {
       {/* ── Alternating Timeline ── */}
       <div className="relative z-10 w-full max-w-4xl">
         {/* vertical spine */}
-        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/50 via-indigo-400/40 to-transparent" />
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-linear-to-b from-cyan-400/50 via-indigo-400/40 to-transparent" />
 
         <div className="flex flex-col gap-12">
           {experiences.map((exp, i) => {
@@ -111,7 +111,7 @@ const Experience = () => {
                   transition={{ type: "spring", stiffness: 300, damping: 28 }}
                 >
                   {/* hover top glow */}
-                  <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+                  <div className="absolute top-0 left-6 right-6 h-px bg-linear-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
                   {/* corner accent */}
                   <div
                     className="absolute top-0 left-0 w-24 h-24 rounded-tl-3xl pointer-events-none"
@@ -187,11 +187,11 @@ const Experience = () => {
         transition={{ delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
         <span className="text-xs text-gray-500 font-mono tracking-widest uppercase">
           More to come
         </span>
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
       </motion.div>
     </section>
   );
