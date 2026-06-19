@@ -17,7 +17,7 @@ const ScrollProgressBar = () => {
     <>
       {/* ── Gradient progress bar ── */}
       <motion.div
-        className="fixed top-0 left-0 right-0 z-[9998] h-[3px] origin-left"
+        className="fixed top-0 left-0 right-0 z-9998 h-[3px] origin-left"
         style={{
           scaleX,
           background: "linear-gradient(90deg,#38bdf8,#818cf8,#a78bfa)",
@@ -28,7 +28,7 @@ const ScrollProgressBar = () => {
 
       {/* ── Glowing tip dot ── */}
       <motion.div
-        className="fixed top-0 left-0 z-[9998] w-3 h-3 rounded-full -translate-y-[2px]"
+        className="fixed top-0 left-0 z-9998 w-3 h-3 rounded-full -translate-y-0.5"
         style={{
           x: smoothDotX,
           background: "radial-gradient(circle,#ffffff,#38bdf8)",

@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 import brian2 from "../assets/brian2.jpeg";
+import webdev254 from "../assets/webdev254.png";
 
 export const techStack = [
   {
@@ -159,6 +160,25 @@ const About = () => {
         className="relative min-h-screen flex items-center px-6 md:px-20 py-24 overflow-hidden
           bg-[#f0f4ff] dark:bg-[#050b18]"
       >
+        {/* Moving background image */}
+        <motion.img
+          src={webdev254}
+          alt=""
+          className="absolute top-1/2 left-1/2 w-[700px] opacity-5 pointer-events-none z-0"
+          style={{
+            transform: "translate(-50%, -50%)",
+          }}
+          animate={{
+            x: [-100, 100, -100],
+            y: [-50, 50, -50],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -277,6 +297,25 @@ const About = () => {
         className="relative py-24 px-6 md:px-20 overflow-hidden
           bg-gray-100 dark:bg-[#080f1e]"
       >
+        {/* Moving background image */}
+        <motion.img
+          src={webdev254}
+          alt=""
+          className="absolute top-1/2 left-1/2 w-[700px] opacity-5 pointer-events-none z-0"
+          style={{
+            transform: "translate(-50%, -50%)",
+          }}
+          animate={{
+            x: [-100, 100, -100],
+            y: [-50, 50, -50],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
         {/* scanlines — dark mode only */}
         <div
           className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-[0.03]"

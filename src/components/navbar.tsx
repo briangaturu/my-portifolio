@@ -102,7 +102,7 @@ const Navbar: React.FC = () => {
             Brian Ireri
           </span>
           <span className="text-gray-900 dark:text-white font-black">.</span>
-          <span className="absolute -inset-1 rounded-lg blur-sm opacity-0 hover:opacity-30 transition-opacity bg-gradient-to-r from-cyan-400 to-indigo-500 -z-10" />
+          <span className="absolute -inset-1 rounded-lg blur-sm opacity-0 hover:opacity-30 transition-opacity bg-linear-to-r from-cyan-400 to-indigo-500 -z-10" />
         </motion.a>
 
         {/* ── Desktop Links ── */}

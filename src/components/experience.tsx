@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import webdev254 from "../assets/webdev254.png";
 
 const experiences = [
   {
@@ -40,6 +41,25 @@ const Experience = () => {
       className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 py-24 overflow-hidden
         bg-gray-100 dark:bg-[#080f1e]"
     >
+      {/* Moving background image */}
+      <motion.img
+        src={webdev254}
+        alt=""
+        className="absolute top-1/2 left-1/2 w-[700px] opacity-5 pointer-events-none z-0"
+        style={{
+          transform: "translate(-50%, -50%)",
+        }}
+        animate={{
+          x: [-100, 100, -100],
+          y: [-50, 50, -50],
+          rotate: [0, 360],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
       {/* scanlines — dark only */}
       <div
         className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-[0.025]"

@@ -2,6 +2,7 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Download } from "lucide-react";
 import brian3 from "../assets/brian3.jpeg";
+import webdev254 from "../assets/webdev254.png";
 
 /* ── Floating particle dot ── */
 const Particle = ({ style }: { style: React.CSSProperties }) => (
@@ -74,6 +75,26 @@ const Hero = () => {
       className="relative flex flex-col md:flex-row items-center justify-between min-h-screen px-8 md:px-20 overflow-hidden
         bg-[#f0f4ff] dark:bg-[#050b18]"
     >
+      {/* Moving background image */}
+      <motion.img
+  src={webdev254}
+  alt=""
+  className="absolute top-1/2 left-1/2 w-[700px] opacity-5 pointer-events-none z-0"
+  style={{
+    transform: "translate(-50%, -50%)",
+  }}
+  animate={{
+    x: [-100, 100, -100],
+    y: [-50, 50, -50],
+    rotate: [0, 360],
+  }}
+  transition={{
+    duration: 30,
+    repeat: Infinity,
+    ease: "linear",
+  }}
+/>
+      
       {/* grid */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -133,7 +154,7 @@ const Hero = () => {
         {/* typewriter */}
         <p className="text-xl font-mono text-gray-500 dark:text-gray-400 h-8">
           <span className="text-indigo-500 dark:text-indigo-400 font-semibold">{displayed}</span>
-          <span className="inline-block w-[2px] h-5 bg-indigo-400 ml-0.5 align-middle animate-pulse" />
+          <span className="inline-block w-0.5 h-5 bg-indigo-400 ml-0.5 align-middle animate-pulse" />
         </p>
 
         <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">

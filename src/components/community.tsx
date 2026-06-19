@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, MessageSquare, Users, Zap } from "lucide-react";
+import webdev254 from "../assets/webdev254.png";
 
 const communities = [
   {
@@ -55,6 +56,25 @@ const Community = () => {
       className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 py-24 overflow-hidden
         bg-[#f0f4ff] dark:bg-[#080f1e]"
     >
+      {/* Moving background image */}
+      <motion.img
+        src={webdev254}
+        alt=""
+        className="absolute top-1/2 left-1/2 w-[700px] opacity-5 pointer-events-none z-0"
+        style={{
+          transform: "translate(-50%, -50%)",
+        }}
+        animate={{
+          x: [-100, 100, -100],
+          y: [-50, 50, -50],
+          rotate: [0, 360],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
       {/* scanlines — dark only */}
       <div
         className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-[0.025]"
@@ -110,7 +130,7 @@ const Community = () => {
           return (
             <motion.div
               key={item.title}
-              className={`group relative flex flex-col rounded-3xl border bg-gradient-to-br backdrop-blur-xl p-7 ${item.accent}`}
+              className={`group relative flex flex-col rounded-3xl border bg-linear-to-br backdrop-blur-xl p-7 ${item.accent}`}
               style={{ boxShadow: `0 8px 40px ${item.glow}` }}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -119,7 +139,7 @@ const Community = () => {
               viewport={{ once: true }}
             >
               {/* top hover glow */}
-              <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+              <div className="absolute top-0 left-6 right-6 h-px bg-linear-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
               {/* corner accent */}
               <div
                 className="absolute top-0 left-0 w-24 h-24 rounded-tl-3xl pointer-events-none"
@@ -187,11 +207,11 @@ const Community = () => {
         transition={{ delay: 0.6 }}
         viewport={{ once: true }}
       >
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
         <span className="text-xs text-gray-500 font-mono tracking-widest uppercase">
           Better Together
         </span>
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+        <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
       </motion.div>
     </section>
   );
