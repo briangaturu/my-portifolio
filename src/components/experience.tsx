@@ -92,7 +92,7 @@ const Experience = () => {
         viewport={{ once: true }}
       >
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-500 dark:text-cyan-400 mb-3">
-          // Where I've Worked
+           Where I've Worked
         </p>
         <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight">
           My{" "}

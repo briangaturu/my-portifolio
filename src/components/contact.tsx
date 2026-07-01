@@ -72,7 +72,7 @@ const Contact = () => {
         viewport={{ once: true }}
       >
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-500 dark:text-cyan-400 mb-3">
-          // Let's Connect
+           Let's Connect
         </p>
         <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight">
           Get In{" "}
@@ -342,11 +342,11 @@ const Contact = () => {
         viewport={{ once: true }}
       >
         <div className="flex items-center gap-4 mb-6">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+          <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
           <span className="text-xs text-gray-400 font-mono tracking-widest uppercase">
             Brian Ireri © {new Date().getFullYear()}
           </span>
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+          <div className="h-px flex-1 bg-linear-to-r from-transparent via-cyan-400/30 to-transparent" />
         </div>
         <p className="text-xs text-gray-400 dark:text-gray-600">
           Built with React · TypeScript · TailwindCSS · Framer Motion

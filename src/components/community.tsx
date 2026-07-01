@@ -107,7 +107,7 @@ const Community = () => {
         viewport={{ once: true }}
       >
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-500 dark:text-cyan-400 mb-3">
-          // Where I Collaborate
+           Where I Collaborate
         </p>
         <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight">
           Developer{" "}
@@ -186,7 +186,7 @@ const Community = () => {
         transition={{ delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <p className="text-sm text-gray-500 dark:text-gray-500 font-mono">// Want to build something together?</p>
+        <p className="text-sm text-gray-500 dark:text-gray-500 font-mono"> Want to build something together?</p>
         <a
           href="https://github.com/briangaturu"
           target="_blank"
